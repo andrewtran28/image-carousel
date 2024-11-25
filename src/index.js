@@ -25,11 +25,17 @@ const menuCarousel = (() => {
   function scrollLeft() {
     if (index === 0) {
       index = IMG_NUM - 1;
-      carousel.scrollTo(imgIndex[index], 0);
+      carousel.scrollTo({
+        left: imgIndex[index],
+        behavior: "smooth",
+      });
       activeNav(index);
     } else {
       index--;
-      carousel.scrollTo(imgIndex[index], 0);
+      carousel.scrollTo({
+        left: imgIndex[index],
+        behavior: "smooth",
+      });
       activeNav(index);
     }
   }
@@ -37,11 +43,17 @@ const menuCarousel = (() => {
   function scrollRight() {
     if (index === IMG_NUM - 1) {
       index = 0;
-      carousel.scrollTo(imgIndex[index], 0);
+      carousel.scrollTo({
+        left: imgIndex[index],
+        behavior: "smooth"
+      });
       activeNav(index);
     } else {
       index++;
-      carousel.scrollTo(imgIndex[index], 0);
+      carousel.scrollTo({
+        left: imgIndex[index],
+        behavior: "smooth"
+      });
       activeNav(index);
     }
   }
@@ -51,7 +63,10 @@ const menuCarousel = (() => {
       imgIndex[i] = IMG_WIDTH * i;
       btn_nav[i] = document.getElementById(`nav${i}`);
       btn_nav[i].addEventListener("click", () => {
-        carousel.scrollTo(imgIndex[i], 0);
+        carousel.scrollTo({
+          left: imgIndex[i],
+          behavior: "smooth",
+        });
         activeNav(i);
         index = i;
         resetAuto();
